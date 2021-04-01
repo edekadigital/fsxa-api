@@ -318,7 +318,8 @@ export class FSXAApi {
 
   async fetchNavigation(
     initialPath: string | null,
-    defaultLocale: string
+    defaultLocale: string,
+    extraHeaders?: Record<string, string>
   ): Promise<NavigationData | null> {
     const encodedInitialPath = initialPath ? encodeURI(initialPath) : null
     if (this.params.mode === 'proxy') {
@@ -330,7 +331,8 @@ export class FSXAApi {
       const response = await fetch(url, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          ...extraHeaders
         },
         body: JSON.stringify({
           initialPath,
@@ -363,7 +365,8 @@ export class FSXAApi {
     })
     const response = await fetch(url, {
       headers: {
-        'Accept-Language': '*'
+        'Accept-Language': '*',
+        ...extraHeaders
       }
     })
 

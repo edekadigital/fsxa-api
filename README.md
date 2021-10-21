@@ -1,3 +1,57 @@
+# Build & Release
+
+In order to use updates made to this fork `@edekadigital/fsxa-api` a new version must be published to Artifactory.
+
+## Preparation
+
+### Set Artifactory as npm registry
+
+Make sure you are working with Artifactory as npm registry, not the public npm registry, by creating a .npmrc file.
+
+```
+echo "registry=https://repo.edeka.dev/artifactory/api/npm/digitales-npm/" > .npmrc
+```
+
+### Login to Artifactoy
+
+Make sure you are authenticated against Artifactory with the user `digitales-npm`. The password is stored securely in 1Password.
+
+```
+npm login
+```
+
+## Build & Release
+
+### Build
+
+Make sure you are on the `master` branch and create a new build.
+
+```
+git checkout master
+npm run build
+```
+
+### Release
+
+Create a new version (using [semver](https://semver.org/#summary)).
+
+```
+npm version x.y.z
+```
+
+Push the automatically generated commit with changes to `package.json` and the new tag to the git origin (Github).
+
+```
+git push
+git push --tags
+```
+
+Publish the new version to Artifactory.
+
+```
+npm publish
+```
+
 # FSXA-API
 
 The FSXA-API is an interface handling data coming from the FirstSpirit

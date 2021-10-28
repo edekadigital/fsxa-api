@@ -244,6 +244,7 @@ export class CaaSMapper {
       type: 'Section',
       sectionType: section.template.uid,
       previewId: this.buildPreviewId(section.identifier),
+      lifespan: section?.lifespan,
       data: await this.mapDataEntries(section.formData, [...path, 'data']),
       children: []
     }

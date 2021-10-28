@@ -247,6 +247,7 @@ export interface CaaSApi_Section {
   identifier: string
   template: CaaSApi_Template
   formData: CaaSApi_DataEntries
+  lifespan?: Lifespan
 }
 
 export interface CaaSApi_SectionReference {
@@ -256,6 +257,7 @@ export interface CaaSApi_SectionReference {
   identifier: string
   template: CaaSApi_Template
   formData: CaaSApi_DataEntries
+  lifespan?: Lifespan
 }
 
 export interface CaaSApi_Body {
@@ -445,9 +447,15 @@ export interface Content2Section {
   children: Dataset[]
 }
 
+export interface Lifespan {
+  start: string
+  end: string
+}
+
 export interface Section {
   id: string
   previewId: string
+  lifespan?: Lifespan
   type: 'Section'
   sectionType: string
   data: DataEntries

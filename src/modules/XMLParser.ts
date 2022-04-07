@@ -49,7 +49,7 @@ class XMLParser {
 
       const parser = new saxes.SaxesParser(false as any)
       parser.on('error', err => {
-        this.logger.error('[XMLParser]: Error parsing XML', err, xml)
+        this.logger.error(`[XMLParser]: Error parsing in XML ${identifier}`, err, xml)
       })
 
       parser.on('end', () => {

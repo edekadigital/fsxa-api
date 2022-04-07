@@ -305,7 +305,9 @@ export class FSXAApi {
     )
     const data: CaasApi_FilterResponse = await response.json()
     if (!data._embedded) {
-      this.logger.error('[Remote][fetchByFilter] Returned empty result')
+      this.logger.error(
+        `[Remote][fetchByFilter] Returned empty result for: ${JSON.stringify(filters)}`
+      )
       return []
     }
     // we cannot ensure that the response can be mapped through or mapping algorithm if the keys attribute is set

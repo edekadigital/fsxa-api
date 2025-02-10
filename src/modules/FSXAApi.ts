@@ -305,7 +305,7 @@ export class FSXAApi {
     )
     const data: CaasApi_FilterResponse = await response.json()
     if (!data._embedded) {
-      this.logger.error(
+      this.logger.warn(
         `[Remote][fetchByFilter] Returned empty result for: ${JSON.stringify(filters)}`
       )
       return []
